@@ -1,5 +1,5 @@
-import bcrypt from "bcrypt";
-import { Encrypt } from "./encrypt";
+import bcrypt from 'bcrypt';
+import { Encrypt } from './encrypt';
 
 export default class BCrypt implements Encrypt {
   private _bcrypt = bcrypt;
