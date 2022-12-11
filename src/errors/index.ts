@@ -1,21 +1,13 @@
-class BaseError extends Error {
-  status: number;
+import { HttpException, HttpStatus } from '@nestjs/common';
 
-  constructor(status: number, message: string) {
-    super(message);
-    this.name = this.constructor.name;
-    this.status = status;
-  }
-}
-
-export class MissingParamError extends BaseError {
+export class MissingParamError extends HttpException {
   constructor(paramName: string) {
-    super(400, `Missing param: ${paramName}`);
+    super(`Missing param: ${paramName}`, HttpStatus.BAD_REQUEST);
   }
 }
 
-export class ConflictEmailError extends BaseError {
+export class ConflictEmailError extends HttpException {
   constructor(email: string) {
-    super(409, `The email ${email} is already registered`);
+    super(`The email ${email} is already registered`, HttpStatus.CONFLICT);
   }
 }

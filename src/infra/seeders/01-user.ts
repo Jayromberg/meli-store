@@ -1,9 +1,12 @@
+import { v4 as uuidv4 } from 'uuid';
+
 module.exports = {
   up: async (queryInterface) => {
     await queryInterface.bulkInsert(
       'users',
       [
         {
+          id: uuidv4(),
           username: 'Admin',
           role: 'admin',
           email: 'admin@admin.com',
@@ -12,6 +15,7 @@ module.exports = {
           // senha: secret_admin
         },
         {
+          id: uuidv4(),
           username: 'User',
           role: 'user',
           email: 'user@user.com',

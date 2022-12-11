@@ -3,11 +3,12 @@ import { AccountModel } from 'src/user/domain/entity/account';
 import { AddAccountModel } from 'src/user/domain/use-case/add-account';
 import { User } from '../../../../infra/models/user.model';
 import { AddUserRepo } from '../../protocols/addUserRepo';
+import { USER_REPOSITORY } from 'src/constants';
 
 @Injectable()
 export class UserRepository implements AddUserRepo {
   constructor(
-    @Inject('USER_REPOSITORY')
+    @Inject(USER_REPOSITORY)
     private userRepository: typeof User,
   ) {}
 
