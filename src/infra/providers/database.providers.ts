@@ -1,19 +1,14 @@
 import 'dotenv/config';
 import { Sequelize } from 'sequelize-typescript';
+import * as config from '../config/database';
 import { User } from '../models/user.model';
+import { SEQUELIZE } from 'src/constants';
 
 export const databaseProviders = [
   {
-    provide: 'SEQUELIZE',
+    provide: SEQUELIZE,
     useFactory: async () => {
-      const sequelize = new Sequelize({
-        dialect: 'mysql',
-        host: process.env.DB_HOST,
-        port: Number(process.env.DB_PORT),
-        username: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DATABASE,
-      });
+      const sequelize = new Sequelize(config);
       sequelize.addModels([User]);
       await sequelize.sync();
       return sequelize;
