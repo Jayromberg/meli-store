@@ -10,5 +10,4 @@ export interface HttpResponse {
   username: string;
   role: string;
   email: string;
-  password: string;
 }
