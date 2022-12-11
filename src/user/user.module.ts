@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from 'src/infra/database.module';
-import { userProviders } from 'src/infra/providers/user';
+import { userProviders } from 'src/infra/providers/user.providers';
 import { DbAddAccount } from './data/DbAddAccount';
 import { AddUserRepo } from './data/protocols/addUserRepo';
 import { BCrypt } from './data/providers/encrypter/BCrypt';
