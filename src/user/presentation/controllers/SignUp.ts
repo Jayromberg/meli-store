@@ -1,9 +1,11 @@
+import { Injectable } from '@nestjs/common';
 import { Controller } from '../protocols/controller';
 import { HttpRequest, HttpResponse } from '../protocols/http';
 import { Validation } from '../helpers/validators/validation';
 import { badRequest, created } from '../helpers/http-helpers';
 import { AddAccount } from '../../domain/use-case/add-account';
 
+@Injectable()
 export default class SignUpController implements Controller {
   private readonly validation: Validation;
   private readonly addAccount: AddAccount;
