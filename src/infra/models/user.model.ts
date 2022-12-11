@@ -1,8 +1,9 @@
 import { Table, Column, Model } from 'sequelize-typescript';
+import { randomUUID } from 'crypto';
 
 @Table
 export class User extends Model {
-  @Column
+  @Column({ primaryKey: true, defaultValue: randomUUID() })
   id: string;
 
   @Column

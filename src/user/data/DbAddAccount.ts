@@ -6,7 +6,7 @@ import { ConflictEmailError } from '../../errors';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export default class DbAddAccount implements AddAccount {
+export class DbAddAccount implements AddAccount {
   private readonly encrypter: Encrypt;
   private readonly addUserRepo: AddUserRepo;
 
