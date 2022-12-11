@@ -7,8 +7,8 @@ import { BCrypt } from './data/providers/encrypter/BCrypt';
 import { Encrypt } from './data/providers/encrypter/encrypt';
 import { UserRepository } from './data/providers/sequelize/user.repository';
 import { AddAccount } from './domain/use-case/add-account';
-import { SignUpController } from './presentation/controllers/SignUp';
-import { UserController } from './presentation/protocols/controller';
+import { SignUp } from './presentation/SignUp';
+import { SignUpProtocol } from './presentation/protocols/signUp.protocol';
 import { UserMainController } from './user.controller';
 
 @Module({
@@ -29,8 +29,8 @@ import { UserMainController } from './user.controller';
       useClass: DbAddAccount,
     },
     {
-      provide: UserController,
-      useClass: SignUpController,
+      provide: SignUpProtocol,
+      useClass: SignUp,
     },
   ],
 })
