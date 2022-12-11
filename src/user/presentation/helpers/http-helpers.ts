@@ -1,11 +1,9 @@
 import { HttpResponse } from '../protocols/http';
 
 export const created = (body: any): HttpResponse => ({
-  body,
-  statusCode: 201,
+  ...body,
 });
 
-export const badRequest = (error: any): HttpResponse => ({
-  body: { message: error.message },
-  statusCode: error.status,
+export const badRequest = (error: any): any => ({
+  message: error.message,
 });

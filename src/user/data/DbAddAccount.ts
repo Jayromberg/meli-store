@@ -1,10 +1,12 @@
 import { AccountModel } from '../domain/entity/account';
 import { AddAccount, AddAccountModel } from '../domain/use-case/add-account';
-import { Encrypt } from './helpers/encrypter/encrypt';
+import { Encrypt } from './providers/encrypter/encrypt';
 import { AddUserRepo } from './protocols/addUserRepo';
 import { ConflictEmailError } from '../../errors';
+import { Injectable } from '@nestjs/common';
 
-export default class DbAddAccount implements AddAccount {
+@Injectable()
+export class DbAddAccount implements AddAccount {
   private readonly encrypter: Encrypt;
   private readonly addUserRepo: AddUserRepo;
 
@@ -14,7 +16,7 @@ export default class DbAddAccount implements AddAccount {
   }
 
   async add(account: AddAccountModel): Promise<AccountModel> {
-    const { name, email, password } = account;
+    const { username, role, email, password } = account;
     const isUser = await this.addUserRepo.findByEmail(email);
 
     if (isUser) throw new ConflictEmailError(email);
@@ -22,7 +24,8 @@ export default class DbAddAccount implements AddAccount {
     const hash = await this.encrypter.encrypt(password);
 
     const newAccount = await this.addUserRepo.create({
-      name,
+      username,
+      role,
       email,
       password: hash,
     });

@@ -1,9 +1,14 @@
 export interface HttpRequest {
-  body?: any;
-  params?: string;
+  username: string;
+  role: string;
+  email: string;
+  password: string;
 }
 
 export interface HttpResponse {
-  body?: any;
-  statusCode: number;
+  id: number;
+  username: string;
+  role: string;
+  email: string;
+  password: string;
 }

@@ -1,45 +1,20 @@
-import { INTEGER, STRING, Model } from 'sequelize';
-import db from '.';
+import { Table, Column, Model } from 'sequelize-typescript';
+import { randomUUID } from 'crypto';
 
-class User extends Model {
-  id!: number;
-  username!: string;
-  role!: string;
-  email!: string;
-  password!: string;
+@Table
+export class User extends Model {
+  @Column({ primaryKey: true, defaultValue: randomUUID() })
+  id: string;
+
+  @Column
+  username: string;
+
+  @Column
+  role: string;
+
+  @Column
+  email: string;
+
+  @Column
+  password: string;
 }
-
-User.init(
-  {
-    id: {
-      type: INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    username: {
-      type: STRING,
-      allowNull: false,
-    },
-    role: {
-      type: STRING,
-      allowNull: false,
-    },
-    email: {
-      type: STRING,
-      allowNull: false,
-    },
-    password: {
-      type: STRING,
-      allowNull: false,
-    },
-  },
-  {
-    underscored: true,
-    sequelize: db,
-    modelName: 'users',
-    timestamps: false,
-  },
-);
-
-export default User;
