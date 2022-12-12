@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { AccountModel } from 'src/user/domain/entity/account';
-import { AddAccountModel } from 'src/user/domain/use-case/add-account';
+import { AccountModel } from 'src/registerUser/domain/entity/account';
+import { AddAccountModel } from 'src/registerUser/domain/use-case/add-account';
 import { User } from '../../../../infra/models/user.model';
 import { AddUserRepo } from '../../protocols/addUserRepo';
 import { USER_REPOSITORY } from 'src/constants';
