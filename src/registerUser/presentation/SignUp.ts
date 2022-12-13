@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { UserController } from '../protocols/controller';
-import { HttpRequest, HttpResponse } from '../protocols/http';
-import { created } from '../helpers/http-helpers';
-import { AddAccount } from '../../domain/use-case/add-account';
+import { SignUpProtocol } from './protocols/signUp.protocol';
+import { HttpRequest, HttpResponse } from './protocols/http';
+import { created } from './helpers/http-helpers';
+import { AddAccount } from '../domain/use-case/add-account';
 
 @Injectable()
-export class SignUpController implements UserController {
+export class SignUp implements SignUpProtocol {
   private readonly addAccount: AddAccount;
 
   constructor(addAccount: AddAccount) {

@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse } from './http';
 
-export abstract class UserController {
+export abstract class SignUpProtocol {
   abstract handle(httpRequest: HttpRequest): Promise<HttpResponse>;
 }
