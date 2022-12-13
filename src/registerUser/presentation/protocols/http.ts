@@ -6,8 +6,5 @@ export interface HttpRequest {
 }
 
 export interface HttpResponse {
-  id: number;
-  username: string;
-  role: string;
-  email: string;
+  token: string;
 }
